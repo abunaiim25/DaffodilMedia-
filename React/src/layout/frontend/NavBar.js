@@ -1,4 +1,4 @@
-//import axios from 'axios';
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -7,11 +7,12 @@ import { useHistory } from 'react-router-dom';
 
 const NavBar = () => {
 
-    //Logout here
     const history = useHistory();
+
+     //Logout here
     const logoutSubmit = (e) => {
         e.preventDefault(); //for browser not reload
-/*
+
         axios.post('/api/logout').then(res => {
             if (res.data.status === 200) {
                 localStorage.removeItem('auth_token');
@@ -19,8 +20,7 @@ const NavBar = () => {
                 swal("Success", res.data.message, "success");
                 history.push('/');
             }
-        })*/
-
+        })
     }
 
 

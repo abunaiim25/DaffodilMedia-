@@ -7,6 +7,7 @@ const FrontendPublicRoute = ({...rest}) => {
   return (
     <>
       <Route {...rest} render={ (props) => <FrontendLayout {...props} /> } />
+      
     </>
   )
 }

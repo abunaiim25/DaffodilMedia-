@@ -4,14 +4,16 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Redirect, Route, useHistory } from 'react-router-dom'
 import swal from 'sweetalert'
-import AdminLayout from '../layouts/admin/AdminLayout'
+import AdminLayout from '../layout/Admin/AdminLayout'
+//loading =>  //npm install --save react-spinners //https://www.npmjs.com/package/react-spinners
+import Loader from "react-spinners/ClipLoader"; 
 
 
 function AdminPrivateRoute({ ...rest }) {
 
     const history = useHistory();
     const [Authenticated, setAuthenticated] = useState(false);
-    const [Loading, setLoading] = useState(true);//Loading 3
+    const [loading, setLoading] = useState(true);//Loading 3
 
     //after login you can enter in admin panel
     useEffect(() => {
@@ -25,11 +27,12 @@ function AdminPrivateRoute({ ...rest }) {
             setAuthenticated(false);
         };
     }, []);
-    
+
     //without login, if anyone want to go admin panel, they see blank page or 401 error. for that we write this code.
     axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
         if (err.response.status === 401) {
-            swal("No one can enter without admin ", err.response.data.message, "warning");
+            //swal("No One Can Enter Without Admin ", err.response.data.message, "warning");
+            swal("Unauthenticated", "No One Can Enter Without Admin", "warning");
             history.push('/');
         }
         return Promise.reject(err);
@@ -55,23 +58,25 @@ function AdminPrivateRoute({ ...rest }) {
     );
 
 
-    if (Loading)//Loading 3
-    {
-        return <div className=''>
-          <h4>Loading...</h4>  
+    if (loading)//Loading 3 
+    {//npm install --save react-spinners
+        return <div className='loader_loading'>
+            <Loader color={'36D7B7'} loading={loading} size={100} />
         </div>
     }
 
 
     return (
+        <>
+            <Route {...rest}
+                render={({ props, location }) =>
+                    Authenticated ?
+                        (<AdminLayout {...props} />) :
+                        (<Redirect to={{ pathname: "/authentication", state: { from: location } }} />)//when user want to go admin page, then login page came here
+                }
+            />
 
-        <Route {...rest}
-            render={({ props, location }) =>
-                Authenticated ?
-                    (<AdminLayout {...props} />) :
-                    (<Redirect to={{ pathname: "/login", state: { from: location } }} />)//when user want to go admin page, then login page came here
-            }
-        />
+        </>
     )
 }
 
