@@ -1,10 +1,18 @@
 import React from 'react'
 
+import Stories from './Stories'
+import CreatePost from './CreatePost'
+import Feeds from './Feeds'
+
 const Home = () => {
   return (
-    <div>
-      <h1> Home </h1>
-    </div>
+    <>
+      <Stories />
+
+      <CreatePost />
+
+      <Feeds />
+    </>
   )
 }
 

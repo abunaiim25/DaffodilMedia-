@@ -32,7 +32,7 @@ function AdminPrivateRoute({ ...rest }) {
     axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
         if (err.response.status === 401) {
             //swal("No One Can Enter Without Admin ", err.response.data.message, "warning");
-            swal("Unauthenticated", "No One Can Enter Without Admin", "warning");
+            swal("Unauthenticated, Login First", "No One Can Enter Without Admin", "warning");
             history.push('/');
         }
         return Promise.reject(err);

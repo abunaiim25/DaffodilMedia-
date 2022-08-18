@@ -1,132 +1,94 @@
-import React from 'react'
 
 const Sidebar = () => {
     return (
-
         <>
-
-            <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div className="sidebar-brand-icon rotate-n-15">
-                        <i className="fas fa-laugh-wink"></i>
-                    </div>
-                    <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-                </a>
-
-
-                <hr className="sidebar-divider my-0" />
-
-
-
-                <li className="nav-item active">
-                    <a className="nav-link" href="/">
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-
-
-                <hr className="sidebar-divider" />
-
-
-                <div className="sidebar-heading">
-                    Interface
-                </div>
-
-                <li className="nav-item">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i className="fas fa-fw fa-cog"></i>
-                        <span>Components</span>
+            <nav id="sidebar" className="sidebar js-sidebar">
+                <div className="sidebar-content js-simplebar">
+                    <a className="sidebar-brand" href="">
+                        <i class="fa-solid fa-a"></i> <span className="align-middle hidden_mobile"> Admin Panel</span>
                     </a>
-                    <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div className="bg-white py-2 collapse-inner rounded">
-                            <h6 className="collapse-header">Custom Components:</h6>
-                            <a className="collapse-item" href="buttons.html">Buttons</a>
-                            <a className="collapse-item" href="cards.html">Cards</a>
-                        </div>
-                    </div>
-                </li>
+
+                    <ul className="sidebar-nav">
+                        <li className="sidebar-header">
+                            Pages
+                        </li>
+
+                        <li className="sidebar-item active">
+                            <a className="sidebar-link" href="index.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item nav-item">
+                            <a className="sidebar-link" href="pages-profile.html">
+                                <i class="fa-solid fa-user"></i> <span className="align-middle hidden_mobile">Profile</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item nav-item dropdown active">
+                            <a className="sidebar-link nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i className="fa-solid fa-user"></i> <span className="align-middle hidden_mobile">Dropdown</span>
+                            </a>
+                            <ul className="sidebar-nav dropdown-menu dropdownItem " aria-labelledby="navbarDropdown">
+                                <li className="dropdownHead"><a className="dropdown-item  sidebar-link" href="#">  <i className="fa-solid fa-house"></i> <span className="align-middle">Action</span></a></li>
+
+                                <li><a className="dropdown-item sidebar-link" href="#">  <i className="fa-solid fa-house"></i> <span className="align-middle">Action Here</span></a></li>
+                            </ul>
+                        </li>
+
+                        <li className="sidebar-item nav-item">
+                            <a className="sidebar-link" href="pages-sign-in.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Sign In</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="pages-sign-up.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Sign Up</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="pages-blank.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Blank</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-header">
+                            Tools
+                        </li>
+
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="ui-buttons.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Buttons</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="ui-forms.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Forms</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="ui-cards.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Cards</span>
+                            </a>
+                        </li>
+
+                        <li className="sidebar-item">
+                            <a className="sidebar-link" href="ui-typography.html">
+                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Typography</span>
+                            </a>
+                        </li>
 
 
-                <li className="nav-item">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                        aria-expanded="true" aria-controls="collapseUtilities">
-                        <i className="fas fa-fw fa-wrench"></i>
-                        <span>Utilities</span>
-                    </a>
-                    <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
-                        <div className="bg-white py-2 collapse-inner rounded">
-                            <h6 className="collapse-header">Custom Utilities:</h6>
-                            <a className="collapse-item" href="utilities-color.html">Colors</a>
-                            <a className="collapse-item" href="utilities-border.html">Borders</a>
-                            <a className="collapse-item" href="utilities-animation.html">Animations</a>
-                            <a className="collapse-item" href="utilities-other.html">Other</a>
-                        </div>
-                    </div>
-                </li>
+
+                    </ul>
 
 
-                <hr className="sidebar-divider" />
-
-
-                <div className="sidebar-heading">
-                    Addons
                 </div>
-
-
-                <li className="nav-item">
-                    <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="true" aria-controls="collapsePages">
-                        <i className="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div className="bg-white py-2 collapse-inner rounded">
-                            <h6 className="collapse-header">Login Screens:</h6>
-                            <a className="collapse-item" href="login.html">Login</a>
-                            <a className="collapse-item" href="register.html">Register</a>
-                            <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
-                            <div className="collapse-divider"></div>
-                            <h6 className="collapse-header">Other Pages:</h6>
-                            <a className="collapse-item" href="404.html">404 Page</a>
-                            <a className="collapse-item" href="blank.html">Blank Page</a>
-                        </div>
-                    </div>
-                </li>
-
-
-                <li className="nav-item">
-                    <a className="nav-link" href="charts.html">
-                        <i className="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
-                </li>
-
-
-                <li className="nav-item">
-                    <a className="nav-link" href="tables.html">
-                        <i className="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
-                </li>
-
-
-                <hr className="sidebar-divider d-none d-md-block" />
-
-
-                <div className="text-center d-none d-md-inline">
-                    <button className="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-
-
-                <div className="sidebar-card d-none d-lg-flex">
-                    <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
-                        <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                        <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                </div>
-
-            </ul>
-
+            </nav>
         </>
 
     )

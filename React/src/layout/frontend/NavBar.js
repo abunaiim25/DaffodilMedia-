@@ -3,13 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
+import profile from './assets/images/profile-1.jpg'
 
 
 const NavBar = () => {
 
     const history = useHistory();
 
-     //Logout here
+    //Logout here
     const logoutSubmit = (e) => {
         e.preventDefault(); //for browser not reload
 
@@ -30,16 +31,30 @@ const NavBar = () => {
         AuthButtons = (
             <ul className='navbar-nav'>
                 <li className="nav-item">
-                    <Link className="nav-link " aria-current="page" to="/authentication">Login</Link>
+                    <Link className="nav-link btn_border" aria-current="page" to="/authentication">Login</Link>
                 </li>
-               
+
             </ul>
         )
     }
     else {
         AuthButtons = (
             <li className="nav-item">
-                <button type='button' onClick={logoutSubmit} className="nav-link btn btn-danger btn-sm text-white" >Logout</button>
+
+                { /** Bootstrap on Admin */}
+                <ul className="navbar-nav navbar-align profile_dropdown">
+                    <li className="nav-item dropdown">
+                        <a className="nav-link  d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                            <div className="profile-photo">
+                                <img src={profile} alt="" />
+                            </div>
+                        </a>
+                        <div className="dropdown-menu dropdown-menu-end dropdown_item">
+                            <a className="dropdown-item" href="pages-profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+                            <a type='button' className="dropdown-item" onClick={logoutSubmit}><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+                        </div>
+                    </li>
+                </ul>
             </li>
         )
     }
@@ -47,44 +62,24 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" href="#">Navbar</Link>
+            <nav>
+                <div className="container">
+                    <Link to="/"><h2 className="log"><b> Social Media</b></h2></Link>
 
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to="/about">About</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to="/contact">Contact</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to="/collections">Collection</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link className="nav-link " aria-current="page" to="/cart">Cart</Link>
-                            </li>
-
-                            {/** login register logout */}
-                            {AuthButtons}
-
-
-                        </ul>
-
+                    <div className="search-bar">
+                        <i className="uil uil-search"></i>
+                        <input type="search" placeholder="Searching..." />
                     </div>
+
+                    <div className="create">
+                        <label className="btn btn-primary" for="create-post">Create</label>
+
+                        {/** login register logout {AuthButtons}*/}
+                        {AuthButtons}
+                    </div>
+
+
+
                 </div>
             </nav>
         </>
