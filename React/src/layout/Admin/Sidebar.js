@@ -1,12 +1,14 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
     return (
         <>
             <nav id="sidebar" className="sidebar js-sidebar">
                 <div className="sidebar-content js-simplebar">
-                    <a className="sidebar-brand" href="">
+                    <Link to="/admin/dashboard" className="sidebar-brand" >
                         <i class="fa-solid fa-a"></i> <span className="align-middle hidden_mobile"> Admin Panel</span>
-                    </a>
+                    </Link>
 
                     <ul className="sidebar-nav">
                         <li className="sidebar-header">
@@ -14,15 +16,15 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-item active">
-                            <a className="sidebar-link" href="index.html">
-                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Dashboard</span>
-                            </a>
+                            <Link to="/admin/dashboard" className="sidebar-link">
+                            <i class="fa-solid fa-laptop-code"></i> <span className="align-middle hidden_mobile">Dashboard</span>
+                            </Link>
                         </li>
 
                         <li className="sidebar-item nav-item">
-                            <a className="sidebar-link" href="pages-profile.html">
-                                <i class="fa-solid fa-user"></i> <span className="align-middle hidden_mobile">Profile</span>
-                            </a>
+                            <Link to="/" target="_blank" className="sidebar-link" >
+                            <i class="fa-solid fa-house"></i>  <span className="align-middle hidden_mobile">Home</span>
+                            </Link>
                         </li>
 
                         <li className="sidebar-item nav-item dropdown active">
@@ -30,28 +32,28 @@ const Sidebar = () => {
                             <i className="fa-solid fa-user"></i> <span className="align-middle hidden_mobile">Dropdown</span>
                             </a>
                             <ul className="sidebar-nav dropdown-menu dropdownItem " aria-labelledby="navbarDropdown">
-                                <li className="dropdownHead"><a className="dropdown-item  sidebar-link" href="#">  <i className="fa-solid fa-house"></i> <span className="align-middle">Action</span></a></li>
+                                <li className="dropdownHead"><Link className="dropdown-item  sidebar-link" href="#">  <i className="fa-solid fa-house"></i> <span className="align-middle">Action</span></Link></li>
 
-                                <li><a className="dropdown-item sidebar-link" href="#">  <i className="fa-solid fa-house"></i> <span className="align-middle">Action Here</span></a></li>
+                                <li><Link className="dropdown-item sidebar-link" href="#">  <i className="fa-solid fa-house"></i> <span className="align-middle">Action Here</span></Link></li>
                             </ul>
                         </li>
 
                         <li className="sidebar-item nav-item">
-                            <a className="sidebar-link" href="pages-sign-in.html">
+                            <Link className="sidebar-link" href="pages-sign-in.html">
                                 <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Sign In</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="sidebar-item">
-                            <a className="sidebar-link" href="pages-sign-up.html">
+                            <Link className="sidebar-link" href="pages-sign-up.html">
                                 <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Sign Up</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="sidebar-item">
-                            <a className="sidebar-link" href="pages-blank.html">
+                            <Link className="sidebar-link" href="pages-blank.html">
                                 <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Blank</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="sidebar-header">
@@ -59,30 +61,16 @@ const Sidebar = () => {
                         </li>
 
                         <li className="sidebar-item">
-                            <a className="sidebar-link" href="ui-buttons.html">
+                            <Link className="sidebar-link" href="ui-buttons.html">
                                 <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Buttons</span>
-                            </a>
+                            </Link>
                         </li>
 
                         <li className="sidebar-item">
-                            <a className="sidebar-link" href="ui-forms.html">
+                            <Link className="sidebar-link" href="ui-forms.html">
                                 <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Forms</span>
-                            </a>
+                            </Link>
                         </li>
-
-                        <li className="sidebar-item">
-                            <a className="sidebar-link" href="ui-cards.html">
-                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Cards</span>
-                            </a>
-                        </li>
-
-                        <li className="sidebar-item">
-                            <a className="sidebar-link" href="ui-typography.html">
-                                <i class="fa-solid fa-house"></i> <span className="align-middle hidden_mobile">Typography</span>
-                            </a>
-                        </li>
-
-
 
                     </ul>
 

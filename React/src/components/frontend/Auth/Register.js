@@ -2,9 +2,21 @@ import React from 'react'
 import axios from 'axios';
 import { useState } from 'react';
 import swal from 'sweetalert';
-import { useHistory } from 'react-router-dom'; 
+import { Link, useHistory } from 'react-router-dom'; 
+import { useEffect } from 'react';
 
 const Register = () => {
+
+  //========== START JAVASCRIPT ==========
+  useEffect(() => {
+    const signInButton = document.getElementById('signInMobile');
+    const container = document.getElementById('container');
+
+    signInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+  }, [])
+  //========== END JAVASCRIPT ==========
 
   const history = useHistory();
   const [registerInput, setRegister] = useState({
@@ -24,6 +36,10 @@ const Register = () => {
   const registerSubmit = (e) => {
     e.preventDefault();
 
+     //button loading
+     const thisClicked = e.currentTarget;
+     thisClicked.innerText = "Please wait, Registering...";
+
     const data = {
       name: registerInput.name,
       email: registerInput.email,
@@ -38,12 +54,12 @@ const Register = () => {
           localStorage.setItem('auth_token', res.data.token);
           localStorage.setItem('auth_name', res.data.username);
           swal("Success", res.data.message, "success");
+          thisClicked.innerText = "REGISTER"; //loading 
           history.push('/');
         }
         else {
           setRegister({ ...registerInput, error_list: res.data.validation_errors });
-          //swal("Failed", "Email or Password not Match", "error");
-          swal("Failed", res.data.validation_errors, "error");
+          thisClicked.innerText = "REGISTER"; //loading 
         }
       });
     });
@@ -53,7 +69,8 @@ const Register = () => {
   return (
     <>
       <div className="form-container sign-up-container">
-      <form onSubmit={registerSubmit}>
+  
+      <form>
             <h2>Create Account</h2>
            
             <div className='margin_top'>
@@ -81,9 +98,9 @@ const Register = () => {
               <span onClick={window['hideShow2']} className="fa fa-fw fa-eye field-icon toggle-password"></span>
               <span className="text-danger">{registerInput.error_list.password}</span>
             </div>
-            <button type='submit' className='top'>Register</button>
+            <button type='submit' onClick={(e)=>registerSubmit(e)} className='top'>REGISTER</button>
 
-            <p className='signin_account'  onClick={window['loginMobile']} id="signInMobile"><i class="fa-solid fa-arrow-left"></i>  Sign in your account </p>
+            <p className='signin_account' id="signInMobile"><i class="fa-solid fa-arrow-left"></i>  Sign in your account </p>
 
           </form>
         </div>

@@ -1,3 +1,0 @@
-function alertIt(){
-  alert("hi")
-}

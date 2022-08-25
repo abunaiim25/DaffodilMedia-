@@ -8,12 +8,13 @@ import Sidebar from './Sidebar';
 import Theme from './Theme';
 
 
+
 const FrontendLayout = () => {
+
     return (
         <>
             <div className='socialMedia'>
                 <NavBar />
-
 
                 <main>
                     <div className="container">
@@ -43,7 +44,9 @@ const FrontendLayout = () => {
                             </Switch>
                         </div>
 
+                        <div className="right">
                         <RightSide />
+                        </div>
                     </div>
                 </main>
 

@@ -6,15 +6,10 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AdminRouteList from "../../routes/AdminRouteList"; //Router -> MasterLayout -> App
-import './assets/css/AdminLayout.css';
+
 
 
 const AdminLayout = () => {
-
-
-  function alertIt() {
-    alert("hi")
-  }
 
   return (
     <>

@@ -1,11 +1,15 @@
 import React from 'react'
+import profile2 from './assets/images/profile-2.jpg'
+import profile3 from './assets/images/profile-3.jpg'
+import profile4 from './assets/images/profile-4.jpg'
+import profile5 from './assets/images/profile-5.jpg'
+import profile6 from './assets/images/profile-6.jpg'
+
 
 const RightSide = () => {
     return (
         <>
-
-            <div className="right">
-
+            <div className="fixed-right">
                 <div className="messages">
                     <div className="heading">
                         <h4>Messages</h4>
@@ -28,7 +32,7 @@ const RightSide = () => {
 
                     <div className="message">
                         <div className="profile-photo">
-                            <img src="./images/profile-17.jpg" alt="" />
+                            <img src={profile2} alt="" />
                             <div className="active"></div>
                         </div>
                         <div className="message-body">
@@ -38,7 +42,7 @@ const RightSide = () => {
                     </div>
                     <div className="message">
                         <div className="profile-photo">
-                            <img src="./images/profile-16.jpg" alt="" />
+                            <img src={profile3} alt="" />
                             <div className="active"></div>
                         </div>
                         <div className="message-body">
@@ -48,7 +52,7 @@ const RightSide = () => {
                     </div>
                     <div className="message">
                         <div className="profile-photo">
-                            <img src="./images/profile-9.jpg" alt="" />
+                            <img src={profile4} alt="" />
                         </div>
                         <div className="message-body">
                             <h5>Edem Quist</h5>
@@ -57,7 +61,7 @@ const RightSide = () => {
                     </div>
                     <div className="message">
                         <div className="profile-photo">
-                            <img src="./images/profile-19.jpg" alt="" />
+                            <img src={profile5} alt="" />
                         </div>
                         <div className="message-body">
                             <h5>Edem Quist</h5>
@@ -66,63 +70,8 @@ const RightSide = () => {
                     </div>
 
                 </div>
-
-                <div className="friend-requests">
-                    <h4>Requests</h4>
-                    <div className="request">
-                        <div className="info">
-                            <div className="profile-photo">
-                                <img src="./images/profile-14.jpg" alt="" />
-                            </div>
-
-                            <div>
-                                <h5>Hajia Bintu</h5>
-                                <p className="text-muted">8 mutual friends</p>
-                            </div>
-                        </div>
-
-                        <div className="action">
-                            <button className="btn btn-primary">Accept</button>
-                            <button className="btn">Decline</button>
-                        </div>
-                    </div>
-                    <div className="request">
-                        <div className="info">
-                            <div className="profile-photo">
-                                <img src="./images/profile-10.jpg" alt="" />
-                            </div>
-
-                            <div>
-                                <h5>Alia Bintu</h5>
-                                <p className="text-muted">8 mutual friends</p>
-                            </div>
-                        </div>
-
-                        <div className="action">
-                            <button className="btn btn-primary">Accept</button>
-                            <button className="btn">Decline</button>
-                        </div>
-                    </div>
-                    <div className="request">
-                        <div className="info">
-                            <div className="profile-photo">
-                                <img src="./images/profile-8.jpg" alt="" />
-                            </div>
-
-                            <div>
-                                <h5>Kausar</h5>
-                                <p className="text-muted">8 mutual friends</p>
-                            </div>
-                        </div>
-
-                        <div className="action">
-                            <button className="btn btn-primary">Accept</button>
-                            <button className="btn">Decline</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
 
         </>
     )

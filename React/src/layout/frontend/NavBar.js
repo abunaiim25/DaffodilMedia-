@@ -31,9 +31,8 @@ const NavBar = () => {
         AuthButtons = (
             <ul className='navbar-nav'>
                 <li className="nav-item">
-                    <Link className="nav-link btn_border" aria-current="page" to="/authentication">Login</Link>
+                    <Link to="/authentication" className="btn btn-primary ">Login</Link>
                 </li>
-
             </ul>
         )
     }
@@ -42,15 +41,16 @@ const NavBar = () => {
             <li className="nav-item">
 
                 { /** Bootstrap on Admin */}
-                <ul className="navbar-nav navbar-align profile_dropdown">
+                <ul className="navbar-nav  profile_dropdown">
                     <li className="nav-item dropdown">
-                        <a className="nav-link  d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                        <a data-bs-toggle="dropdown">
                             <div className="profile-photo">
                                 <img src={profile} alt="" />
                             </div>
                         </a>
                         <div className="dropdown-menu dropdown-menu-end dropdown_item">
-                            <a className="dropdown-item" href="pages-profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+                            <a className="dropdown-item" href=""><i class="fa-solid fa-user"></i> Profile</a>
+
                             <a type='button' className="dropdown-item" onClick={logoutSubmit}><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
                         </div>
                     </li>
@@ -64,7 +64,7 @@ const NavBar = () => {
         <>
             <nav>
                 <div className="container">
-                    <Link to="/"><h2 className="log"><b> Social Media</b></h2></Link>
+                    <Link to="/"><h2 className="logo primary-color"><b> Daffodil Media</b></h2></Link>
 
                     <div className="search-bar">
                         <i className="uil uil-search"></i>
@@ -72,7 +72,6 @@ const NavBar = () => {
                     </div>
 
                     <div className="create">
-                        <label className="btn btn-primary" for="create-post">Create</label>
 
                         {/** login register logout {AuthButtons}*/}
                         {AuthButtons}

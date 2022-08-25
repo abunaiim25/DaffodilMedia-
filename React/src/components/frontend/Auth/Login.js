@@ -4,12 +4,23 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
+import { useEffect } from 'react';
 
 
 const Login = () => {
 
-    const history = useHistory();
+  //========== START JAVASCRIPT ==========
+  useEffect(() => {
+    const signUpButton = document.getElementById('signUpMobile');
+    const container = document.getElementById('container');
 
+    signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+  }, [])
+  //========== END JAVASCRIPT ==========
+
+    const history = useHistory();
     const [loginInput, setLogin] = useState({
       email: "",
       password: "",
@@ -25,6 +36,10 @@ const Login = () => {
   
     const loginSubmit = (e) => {
       e.preventDefault();
+
+      //button loading
+      const thisClicked = e.currentTarget;
+      thisClicked.innerText = "Please wait, Signing...";
   
       const data = {
         email: loginInput.email,
@@ -38,18 +53,22 @@ const Login = () => {
             localStorage.setItem('auth_token', res.data.token);
             localStorage.setItem('auth_name', res.data.username);
             swal("Success", res.data.message, "success");
+            thisClicked.innerText = "SIGN IN"; //loading 
             if (res.data.role === 'admin') {
               history.push('/admin/dashboard');// 
             }
             else {
               history.push('/');// login to home page
+              thisClicked.innerText = "SIGN IN"; //loading 
             }
           }
           else if (res.data.status === 401) {
             swal("Warning", res.data.message, "warning");
+            thisClicked.innerText = "SIGN IN"; //loading 
           }
           else {
             setLogin({ ...loginInput, error_list: res.data.validation_errors });
+            thisClicked.innerText = "SIGN IN"; //loading 
           }
         });
       });
@@ -58,7 +77,8 @@ const Login = () => {
     return (
         <>
             <div className="form-container sign-in-container">
-                <form onSubmit={loginSubmit}>
+            <Link to="/" className='arow'><i class="fa-solid fa-arrow-left"></i></Link>
+                <form>
                     <h2>Sign in</h2>
                     <div className="social-container">
                         <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
@@ -70,19 +90,21 @@ const Login = () => {
                     <div className='margin_top'>
                         <label><p>Email:</p></label>
                         <input type="email" name='email' onChange={handleInput} value={loginInput.email} />
-                        <span>{loginInput.error_list.email}</span>
+                        <span className="text-danger">{loginInput.error_list.email}</span>
                     </div>
 
                     <div className='margin_top'>
                         <label><p>Password:</p></label>
                         <input type="password" name='password' onChange={handleInput} value={loginInput.password} id="checkPassword" />
+                        <span className="text-danger">{loginInput.error_list.password}</span>
+
                         <span onClick={window['hideShow3']} className="fa fa-fw fa-eye field-icon toggle-password"></span>
                         <Link to="/forget-password" className='forget_password'><small> Forgot your password?</small></Link>
                     </div>
 
-                    <button>Sign In</button>
+                    <button type='submit'  onClick={(e)=>loginSubmit(e)} >SIGN IN</button>
 
-                    <p className='signin_account' onClick={window['signupMobile']} id="signUpMobile">Sign in your account <i class="fa-solid fa-arrow-right"></i></p>
+                    <p className='signin_account' id="signUpMobile">Sign in your account <i class="fa-solid fa-arrow-right"></i></p>
                 </form>
             </div>
         </>

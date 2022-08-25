@@ -1,21 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+:root {
+    /*for JS page*/
+    --primary-color-hue: 252;
+    /*theme color*/
+    --dark-color-lightness: 17%;
+    /*background color*/
+    --light-color-lightness: 95%;
+    --white-color-lightness: 100%;
+    /*color*/
+    --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
+    --color-light: hsl(252, 30%, var(--light-color-lightness));
+    --color-dark: hsl(252, 30%, var(--dark-color-lightness));
+    --color-white: hsl(252, 30%, var(--white-color-lightness));
+
+    --color-gray: hsl(252, 15%, 65%);
+    --color-secondary: hsl(252, 100%, 90%);
+    --color-success: hsl(120, 95%, 65%);
+    --color-black: hsl(252, 30%, 10%);
+    --color-danger: hsl(0, 95%, 65%);
+    /*size*/
+    --border-radious: 2rem;
+    --card-border-radious: 1rem;
+    --btn-padding: 0.6rem 2rem;
+    --search-padding: 0.6rem 1rem;
+    --card--padding: 1rem;
+    /*size*/
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: -18rem;
+}
+
 
 .body-auth {
-	background: #f6f5f7;
+	background: var(--color-light);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
+	height: 103vh;
 	margin: -20px 0 50px;
+	position: relative;
+}
+
+.body-auth .arow{
+	position: absolute;
+	margin-left: 20px;
+	margin-top: 20px;
 }
 
 .body-auth h1 {
 	font-weight: bold;
 	margin: 0;
 }
+
 
 .body-auth h2 {
 	text-align: center;
@@ -43,14 +81,13 @@ Link {
 
 .body-auth button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid var(--color-primary);
+	background-color: var(--color-primary);
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
 	letter-spacing: 1px;
-	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 	cursor: pointer;
 }
@@ -84,6 +121,7 @@ Link {
 	padding: 10px 13px;
 	margin: 5px 0;
 	width: 100%;
+	margin-top: 8px;
 }
 
 .body-auth .field-icon {
@@ -129,7 +167,7 @@ Link {
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 600px;
+	min-height: 510px;
 }
 
 .body-auth .form-container {
@@ -191,9 +229,9 @@ Link {
 }
 
 .body-auth .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background:  var(--color-primary);
+	background: -webkit-linear-gradient(to right, #FF4B2B,  var(--color-primary));
+	background: linear-gradient(to right, #FF4B2B,  var(--color-primary));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -271,6 +309,30 @@ Link {
 }
 
 /*Forget Password*/
+.body-auth .container_forgetPassword {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 450px;
+	min-height: 350px;
+    padding-top: 30px;
+}
+
+.body-auth .container_forgetPassword label {
+    float: inline-start;
+}
+.body-auth .container_forgetPassword label p{
+	margin-bottom: 8px;
+	margin-top: 15px;
+}
+.body-auth .container_forgetPassword .reset_btn{
+    margin-top: 10px!important;
+}
+
+/*container_resetPassword*/
 .body-auth .container_resetPassword {
 	background-color: #fff;
 	border-radius: 10px;
@@ -278,8 +340,8 @@ Link {
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	max-width: 400px;
-	min-height: 350px;
+	width: 450px;
+	min-height: 500px;
     padding-top: 30px;
 }
 .body-auth .container_resetPassword label {
@@ -290,7 +352,7 @@ Link {
 	margin-top: 15px;
 }
 .body-auth .container_resetPassword .reset_btn{
-    margin-top: 10px;
+    margin-top: 10px!important;
 }
 
 
@@ -310,7 +372,7 @@ Link {
 		overflow: hidden;
 		width: 400px;
 		max-width: 100%;
-		min-height: 580px;
+		min-height: 510px;
 	}
 
 	.body-auth	.form-container {

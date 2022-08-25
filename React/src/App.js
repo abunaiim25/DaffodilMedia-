@@ -7,6 +7,7 @@ import Page403 from './components/errors/Page403';
 import Page404 from './components/errors/Page404';
 import FrontendPublicRoute from './routes_items/FrontendPublicRoute';
 import AdminPrivateRoute from './routes_items/AdminPrivateRoute';
+import ResetPassword from './components/frontend/Auth/ResetPassword';
 
 
 
@@ -34,6 +35,7 @@ function App() {
           {/** Auth */}
           <Route exact path={"/authentication"} component={AuthMaster} />
           <Route exact path={"/forget-password"} component={ForgetPassword} />
+          <Route exact path={"/reset-password/:id"} component={ResetPassword} />
 
           {/** Error */}
           <Route path={"/403"} component={Page403} />
