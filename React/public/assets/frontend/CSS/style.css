@@ -54,6 +54,10 @@ relative, absolute=> absolute kaj kora relative ar modda thaka, jokhon akta div 
     color: var(--color-primary);
 }
 
+.Link{
+    text-decoration: none;
+}
+
 .socialMedia {
     margin-top: -10px;
     font-family: 'Poppins', sans-serif;
@@ -224,6 +228,7 @@ main .container .left .profile {
     cursor: pointer;
     transition: all 300ms ease;
     position: relative;
+    color: var(--color-dark);
 }
 
 .socialMedia .left .sidebar .menu-item:hover {
@@ -447,24 +452,24 @@ main .container .left .profile {
 /*END PHOTO*/
 
 .middle .feeds .feed .desc-text{
-    margin-top: 8px;
-    margin-bottom: -8px;
+    margin-top: 8px!important;
+    margin-bottom: -8px!important;
 }
 
 /*read more, read less*/
 .add-read-more.show-less-content .second-section,
 .add-read-more.show-less-content .read-less {
-   display: none;
+   display: none!important;
 }
 .add-read-more.show-more-content .read-more {
-   display: none;
+   display: none!important;
 }
 .add-read-more .read-more,
 .add-read-more .read-less {
-   font-weight: bold;
-   margin-left: 2px;
-   color: var(--color-primary);
-   cursor: pointer;
+   font-weight: bold!important;
+   margin-left: 2px!important;
+   color: var(--color-primary)!important;
+   cursor: pointer!important;
 }
 
 /*START LIKE COMMENT*/
@@ -498,6 +503,134 @@ main .container .left .profile {
     margin-left: 0.5rem;
 }
 
+/****************create_poll**********************/
+.create_poll{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ::selection{
+    color: var(--color-white);
+  }
+
+  .space_between{
+    display: flex;
+    justify-content: space-between;
+  }
+  .create_poll .wrapper{
+    background: var(--color-white);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+  }
+  .create_poll .wrapper header{
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .create_poll .label_poll{
+    width: 400px;
+  }
+  .create_poll .poll-area label{
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    border: 2px solid var(--color-light);
+    transition: all 0.2s ease;
+  }
+  .create_poll .poll-area label:hover{
+    border-color: var(--color-primary);
+  }
+  .create_poll label.selected{
+    border-color: var(--color-primary)!important;
+  }
+  .create_poll label .row{
+    display: flex;
+    pointer-events: none;
+    justify-content: space-between;
+  }
+  .create_poll label .row .column{
+    display: flex;
+    align-items: center;
+  }
+  .create_poll label .row .circle{
+    height: 19px;
+    width: 19px;
+    display: block;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+  }
+  .create_poll label.selected .row .circle{
+    border-color: var(--color-primary);
+  }
+  .create_poll label .row .circle::after{
+    content: "";
+    height: 11px;
+    width: 11px;
+    background: var(--color-primary);
+    border-radius: inherit;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    display: none;
+  }
+  .create_poll .poll-area label:hover .row .circle::after{
+    display: block;
+    background: var(--color-primary);
+  }
+  .create_poll label.selected .row .circle::after{
+    display: block;
+    background: var(--color-primary)!important;
+  }
+  .create_poll label .row span{
+    font-size: 14px;
+    font-weight: 450;
+  }
+  .create_poll label .row .percent{
+    display: none;
+  }
+  .create_poll label .progress{
+    height: 15px;
+    margin-left: 37px;
+    margin-bottom: 5px;
+    position: relative;
+    background: var(--color-primary);
+    border-radius: 30px;
+    display: none;
+    pointer-events: none;
+  }
+
+  .create_poll label .progress p{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+  }
+  /*
+  .create_poll label .progress:after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    background: #ccc;
+    width: calc(1% * var(--w));
+    border-radius: inherit;
+    transition: all 0.2s ease;
+  }
+  */
+  .create_poll label.selected .progress::after{
+    background: var(--color-primary);
+  }
+  .create_poll label.selectall .progress,
+  .create_poll label.selectall .row .percent{
+    display: block;
+  }
+  .create_poll input[type="radio"],
+  .create_poll input[type="checkbox"]{
+    display: none;
+  }
+  
 /*END LIKE COMMENT*/
 
 

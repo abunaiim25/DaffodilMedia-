@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import profile from './assets/images/profile-1.jpg'
 
 const Sidebar = () => {
@@ -18,8 +19,10 @@ const Sidebar = () => {
         //ACTIVE NAV ITEM
         menuItem.forEach(item => {
             item.addEventListener('click', () => {
+                item.classList.add('active');//after add
                 removeActiveItem();//before remove
                 item.classList.add('active');//after add
+                
 
                 //NOTIFICATION SHOW
                 if (item.id != 'notifications') {
@@ -109,14 +112,22 @@ const Sidebar = () => {
                 </a>
 
                 <div className="sidebar">
-                    <a className="menu-item active" >
+
+                    <Link to="/" className="menu-item Link active">
                         <span><i className="uil uil-home"></i></span>
                         <h3>Home</h3>
-                    </a>
-                    <a className="menu-item">
+                    </Link>
+
+                    <Link to="/profile" className="menu-item">
                         <span><i className="uil uil-user"></i></span>
                         <h3>Profile</h3>
-                    </a>
+                    </Link>
+
+                    <Link to="/create-post" className="menu-item">
+                        <span><i class="fa-solid fa-circle-plus"></i></span>
+                        <h3>Create Post</h3>
+                    </Link>
+
                     <a className="menu-item" id="notifications">
                         <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span>
                         <h3>Notification</h3>
@@ -181,7 +192,9 @@ const Sidebar = () => {
                         <h3>Settings</h3>
                     </a>
                 </div>
-                <label className="btn btn-primary createBtn-sidebar">Create Post</label>
+
+              
+               
             </div>
         </>
     )
