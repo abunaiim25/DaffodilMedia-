@@ -49,7 +49,7 @@
     height: 220px;
     overflow: hidden;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .Profile #profile-banner-image img {
@@ -57,14 +57,16 @@
 }
 
 /***********************Profile Image*******************************/
+
 .profile_upload .profile-pic {
     width: 100px;
     height: 100px;
-    display: inline-block;
+    aspect-ratio: 1/1;
     border-radius: 50%;
+    overflow-y: hidden;
     margin-top: -50px;
     margin-left: 20px;
-    overflow: hidden;
+    box-shadow: 1px 1px 1px  var(--color-primary);
 }
 
 .profile_upload .file-upload {

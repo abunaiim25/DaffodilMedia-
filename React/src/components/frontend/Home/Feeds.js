@@ -184,7 +184,7 @@ const Feeds = () => {
                       <div className="space_between">
                         <div className="column">
                           <span className="circle"></span>
-                          <span className="text">HTML HTML HTML Lorem ipsum dolor, Lo</span>
+                          <span className="text"> ipsum dolor, Lo</span>
                         </div>
                       </div>
                     </div>

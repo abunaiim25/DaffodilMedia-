@@ -1,5 +1,4 @@
 import React from 'react'
-import './assets/Profile.css'
 import brand from './assets/banner.jpg'
 import BioModal from './BioModal';
 import $ from 'jquery';
