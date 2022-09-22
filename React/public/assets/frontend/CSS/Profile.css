@@ -40,7 +40,7 @@
 
 .Profile #profile-d {
     position: absolute;
-    height: 180px;
+   
     z-index: 2;
 }
 
@@ -66,7 +66,7 @@
     overflow-y: hidden;
     margin-top: -50px;
     margin-left: 20px;
-    box-shadow: 1px 1px 1px  var(--color-primary);
+    box-shadow: 1px 1px 1px  var(--color-dark);
 }
 
 .profile_upload .file-upload {
@@ -368,7 +368,7 @@
 @media screen and (max-width: 992px) {
 
     .Profile {
-       width: 400px;
+       width: 100%;
         margin-top: -90px;
     }
 
@@ -377,7 +377,7 @@
         height: 100px;
         display: inline-block;
         border-radius: 50%;
-        margin-top: -90px;
+        margin-top: -110px;
         margin-left: 20px;
         overflow: hidden;
     }
@@ -385,7 +385,7 @@
     .profile_upload .p-image {
         position: absolute;
         top: -10px;
-        right: 10px;
+        right: 20px;
         color: #666666;
         transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
       }

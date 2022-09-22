@@ -534,9 +534,6 @@ relative, absolute=> absolute kaj kora relative ar modda thaka, jokhon akta div 
     font-weight: 600;
   }
 
-  .create_poll {
-    width: 400px;
-  }
   .create_poll .poll-area label{
     display: block;
     margin-bottom: 10px;
@@ -991,33 +988,31 @@ main .container .right .messages .message .profile-photo .active {
 /*=======================================================*/
 @media screen and (max-width: 992px) {
 
-
-    nav .search-bar {
+    .socialMedia nav .search-bar {
         display: none;
     }
 
-    main .container {
-        grid-template-columns: 0 auto 5rem;
+    .socialMedia main .container {
+        grid-template-columns: 0 auto 4.2rem;
         gap: 0;
     }  
 
-    main .container .left {
+    .socialMedia main .container .left {
         /*sidebar right side show*/
         grid-column: 3/4;
         position: fixed;
         bottom: 0;
         right: 0;
-     
     }
 
     /* START NOTIFICATION POPUP */
-    .left .notification-popup {
+    .socialMedia .left .notification-popup {
         position: absolute;
         left: -20rem;
         width: 20rem;
     }
 
-    .left .notification-popup::before {
+    .socialMedia .left .notification-popup::before {
         position: absolute;
         left: calc(20rem - 0.6rem);
         top: 1.3rem;
@@ -1026,15 +1021,15 @@ main .container .right .messages .message .profile-photo .active {
 
     /* END NOTIFICATION POPUP */
 
-    main .container .middle {
+    .socialMedia main .container .middle {
         grid-column: 1/3;
     }
 
-    main .container .right {
+    .socialMedia main .container .right {
         display: none;
     }
 
-    .customize-theme .card-item {
+    .socialMedia .customize-theme .card-item {
         width: 92vw;
     }
 }
