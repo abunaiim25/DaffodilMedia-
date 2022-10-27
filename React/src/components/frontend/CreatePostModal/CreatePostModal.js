@@ -14,10 +14,9 @@ const CreatePostModal = () => {
         <>
             <div className="Modal">
                 <div className="center">
+                    
                     <CreatePost />
-
                     <PollCreate />
-
                     <CreateVideo />
 
                 </div>

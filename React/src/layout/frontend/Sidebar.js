@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { useEffect } from 'react'
+import axios from 'axios';
 import { Link } from 'react-router-dom'
 import profile from './assets/images/profile-1.jpg'
 
@@ -22,7 +24,7 @@ const Sidebar = () => {
                 item.classList.add('active');//after add
                 removeActiveItem();//before remove
                 item.classList.add('active');//after add
-                
+
 
                 //NOTIFICATION SHOW
                 if (item.id != 'notifications') {
@@ -52,6 +54,26 @@ const Sidebar = () => {
         //close modal
         const closeThemModel = (e) => {
             if (e.target.classList.contains('customize-theme')) {
+                themeModal.style.display = 'none';
+            }
+        }
+        themeModal.addEventListener('click', closeThemModel);
+    }, []);
+
+    //=============== Create Post ===============
+    useEffect(() => {
+        const theme = document.querySelector('#post');
+        const themeModal = document.querySelector('.customize-post');
+
+        //open modal
+        const openThemModel = () => {
+            themeModal.style.display = 'grid';
+        }
+        theme.addEventListener('click', openThemModel);
+
+        //close modal
+        const closeThemModel = (e) => {
+            if (e.target.classList.contains('customize-post')) {
                 themeModal.style.display = 'none';
             }
         }
@@ -95,84 +117,63 @@ const Sidebar = () => {
     }, [])
 
     //=============== END JAVASCRIPT ===============
+    //******************************************************************************************/
 
-    return (
-        <>
-            <div className="fixed" >
 
+
+    const [user, setUser] = useState('');
+    useEffect(() => {
+        axios.get('/api/me')
+            .then(response => {
+                console.log(response.data.name);
+                setUser(response.data);
+            });
+    }, []);
+
+
+    var user_me = '';
+    if (user) {
+        user_me =
+            <div>
                 <a className="profile">
                     <div className="profile-photo">
                         <img src={profile} alt="" />
                     </div>
 
                     <div className="handle">
-                        <h4>Diana Ayi</h4>
-                        <small className="text-muted">@dayi</small>
+                        <h4>{user.name}</h4>
+                        <small className="text-muted" style={{ textTransform: "lowercase" }}>@{user.name}</small>
                     </div>
                 </a>
+            </div>
+
+    }
+
+
+    return (
+        <>
+            <div className="fixed" >
+
+                {user_me}
 
                 <div className="sidebar">
 
-                    <Link to="/" className="menu-item Link active">
+                    <Link to="/" className="menu-item Link ">
                         <span><i className="uil uil-home"></i></span>
                         <h3>Home</h3>
                     </Link>
-
-                    <Link to="/profile" className="menu-item">
+                   
+                    <Link to={`/profile/${user.name}`} className="menu-item">
                         <span><i className="uil uil-user"></i></span>
                         <h3>Profile</h3>
                     </Link>
 
-                    <Link to="/create-post" className="menu-item">
-                        <span><i class="fa-solid fa-circle-plus"></i></span>
+              
+                    <a className="menu-item" id="post">
+                        <span><i className="fa-solid fa-circle-plus"></i></span>
                         <h3>Create Post</h3>
-                    </Link>
-
-                    <a className="menu-item" id="notifications">
-                        <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span>
-                        <h3>Notification</h3>
-
-
-                        <div className="notification-popup">
-                            <div>
-                                <div className="profile-photo">
-                                    <img src="./images/profile-2.jpg" alt="" />
-                                </div>
-                                <div className="notification-body">
-                                    <b>Aimona Akter</b> accepced your friend request
-                                    <small className="text-muted">2 DAYS AGO</small>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="profile-photo">
-                                    <img src="./images/profile-3.jpg" alt="" />
-                                </div>
-                                <div className="notification-body">
-                                    <b>Zina Akter</b> comment on your post
-                                    <small className="text-muted">1 DAYS AGO</small>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="profile-photo">
-                                    <img src="./images/profile-4.jpg" alt="" />
-                                </div>
-                                <div className="notification-body">
-                                    <b>Anika Akter</b> accepced your friend request
-                                    <small className="text-muted">1 HOUR AGO</small>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="profile-photo">
-                                    <img src="./images/profile-5.jpg" alt="" />
-                                </div>
-                                <div className="notification-body">
-                                    <b>Anika Gosh</b> and 345 liked on your post
-                                    <small className="text-muted">4 MINUTES AGO</small>
-                                </div>
-                            </div>
-                        </div>
-
                     </a>
+
                     <a className="menu-item" id="messeges-notifications">
                         <span><i className="uil uil-envelope"><small className="notification-count">6</small></i></span>
                         <h3>Messages</h3>
@@ -193,8 +194,8 @@ const Sidebar = () => {
                     </a>
                 </div>
 
-              
-               
+
+
             </div>
         </>
     )

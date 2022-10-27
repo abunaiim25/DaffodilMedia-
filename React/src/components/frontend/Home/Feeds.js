@@ -91,7 +91,7 @@ const Feeds = () => {
       });
     }
 
-  }, [])
+  }, []);
   //=============== END JQUERY ===============
 
 
@@ -203,7 +203,7 @@ const Feeds = () => {
                       </div>
                     </div>
                     <div class="">
-                      <div class="progress" style={{ width: "20%" }}><p>20%</p></div>
+                      <div class="progress" style={{ width: "100%" }}><p>100%</p></div>
                     </div>
                   </label>
 
@@ -252,6 +252,7 @@ const Feeds = () => {
               </div>
             </div>
           </div>
+
 
           <div className="action-button">
             <div className="interaction-buttons">

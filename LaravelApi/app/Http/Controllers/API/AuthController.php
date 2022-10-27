@@ -16,11 +16,19 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rules\Password as RulesPassword;
+use Illuminate\Support\Facades\Auth;
 
 //use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+
+    //===========User=============
+    public function me(Request $request)
+    {
+        return $request->user();
+    }
+    
     //===================Register=======================
     public function register(Request $request)
     {
@@ -78,16 +86,15 @@ class AuthController extends Controller
                 ]);
             } else { //valid
 
-                if($user->role_as == 1) // 1 = admin
+                if ($user->role_as == 1) // 1 = admin
                 {
                     $role = 'admin';
                     $token = $user->createToken($user->email . '_AdminToken', ['server:admin'])->plainTextToken;
-                }
-                else{
+                } else {
                     $role = '';
                     $token = $user->createToken($user->email . '_Token', [''])->plainTextToken;
                 }
-                
+
                 return response()->json([
                     'status' => 200,
                     'username' => $user->name,
@@ -101,7 +108,7 @@ class AuthController extends Controller
     //===================Login=======================
 
 
-    
+
     //===================Logout=======================
     public function logout()
     {
@@ -122,20 +129,19 @@ class AuthController extends Controller
         ]);
 
 
-            $status = Password::sendResetLink(
-                $request->only('email')
-            );
-    
-            if ($status == Password::RESET_LINK_SENT) {
-                return [
-                    'status' => __($status)
-                ];
-            }
-    
-            throw ValidationException::withMessages([
-                'email' => [trans($status)],
-            ]);
-        
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        if ($status == Password::RESET_LINK_SENT) {
+            return [
+                'status' => __($status)
+            ];
+        }
+
+        throw ValidationException::withMessages([
+            'email' => [trans($status)],
+        ]);
     }
 
 
@@ -165,15 +171,12 @@ class AuthController extends Controller
 
         if ($status == Password::PASSWORD_RESET) {
             return response([
-                'message'=> 'Password reset successfully'
+                'message' => 'Password reset successfully'
             ]);
         }
 
         return response([
-            'message'=> __($status)
+            'message' => __($status)
         ], 500);
-
     }
-
-
 }

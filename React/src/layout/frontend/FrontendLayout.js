@@ -1,11 +1,12 @@
 /** 3 */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Post from '../../components/frontend/Post/Post';
 import FrontendRouteList from '../../routes/FrontendRouteList';
 import NavBar from './NavBar';
 import RightSide from './RightSide';
 import Sidebar from './Sidebar';
-import Theme from './Theme';
+import Theme from '../../components/frontend/Theme/Theme';
 
 
 
@@ -53,6 +54,10 @@ const FrontendLayout = () => {
 
                 <div className="customize-theme">
                    <Theme />
+                </div>
+
+                <div className="customize-post">
+                   <Post />
                 </div>
             </div>
         </>

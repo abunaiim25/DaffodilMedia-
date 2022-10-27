@@ -535,7 +535,7 @@ relative, absolute=> absolute kaj kora relative ar modda thaka, jokhon akta div 
   }
 
   .create_poll .poll-area label{
-    display: block;
+    width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
     padding: 5px 15px;
@@ -597,13 +597,14 @@ relative, absolute=> absolute kaj kora relative ar modda thaka, jokhon akta div 
   }
   .create_poll label .progress{
     height: 15px;
-    margin-left: 37px;
+    margin-left: 10px;
     margin-bottom: 5px;
     position: relative;
     background: var(--color-primary);
     border-radius: 30px;
     display: none;
     pointer-events: none;
+  margin-right: 10px;
   }
 
   .create_poll label .progress p{
@@ -942,6 +943,144 @@ main .container .right .messages .message .profile-photo .active {
 }
 
 
+/*=============== Create Post ===============*/
+.customize-post {
+    background: rgba(255, 255, 255, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: grid;
+    text-align: center;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.customize-post .card-item {
+    background: var(--color-white);
+    padding-left:3rem;
+    padding-right:3rem;
+    padding-top:1rem;
+    padding-bottom:1rem;
+    border-radius: var(--card-border-radious);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+.customize-post .post_textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: var(--color-white);
+    border: 1px solid var(--color-primary) ;
+    color: var(--color-dark);
+    resize: none;
+    font-size: 15px;
+}
+
+
+.customize-post .image_upload .container_img {
+    width: 50%;
+    min-width: 100%;
+    position: relative;
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.05);
+}
+
+.customize-post .image_upload input[type="file"] {
+    display: none;
+}
+
+.customize-post .image_upload label {
+    display: block;
+    position: relative;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    width: 200px;
+    padding: 12px 0;
+    margin: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.customize-post .image_upload .container_img p {
+    text-align: center;
+    margin: -15px 0 20px 0;
+    font-size: 10px;
+    color: var(--color-dark);
+}
+
+.customize-post .image_upload #images {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.customize-post .image_upload figure {
+    width: 23%;
+}
+
+.customize-post .image_upload img {
+    width: 100%;
+    max-height: 90px;
+}
+
+.customize-post .image_upload figcaption {
+    text-align: center;
+    font-size: 2.4vmin;
+    margin-top: 0.5vmin;
+}
+
+.customize-post .font-size {
+    margin-top: 5rem;
+}
+
+.customize-post .font-size>div {
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radious);
+    display: flex;
+}
+
+.customize-post .font-size .choose-size {
+    background: var(--color-secondary);
+    height: 0.3rem;
+    width: 100%;
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customize-post .font-size .choose-size span {
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.customize-post .font-size .choose-size span.active {
+    background: var(--color-primary);
+}
+/*=============== Create Post  ===============*/
+
+
+
+
 /*=================================================*/
 /* MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS */
 /*=================================================*/
@@ -980,6 +1119,13 @@ main .container .right .messages .message .profile-photo .active {
 
     .customize-theme .card-item {
         width: 80vw;
+    }
+
+    .customize-post .card-item {
+        width: 80vw;
+    }
+    .customize-post .image_upload figure {
+        width: 22%;
     }
 }
 
