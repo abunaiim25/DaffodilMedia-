@@ -7,6 +7,8 @@ import axios from 'axios';
 import { PUBLIC_URL } from '../../../PUBLIC_URL';
 import BioAddModal from './BioAddModal';
 import swal from 'sweetalert';
+import Profile_Skeleton from '../../Loading/frontend_loading/profile/Profile_Skeleton';
+import ClipLoader from "react-spinners/ClipLoader"; 
 
 const Profile = (props) => {
 
@@ -29,7 +31,7 @@ const Profile = (props) => {
     });
   });
 
-  //========Auth user
+  //========Auth user=============
   const [user, setUser] = useState('');
   useEffect(() => {
     axios.get('/api/me')
@@ -45,6 +47,7 @@ useEffect(() => {
     axios.get(`/api/my_profile_view/${id}`).then(res => {
         if (res.data.status === 200) {
           setMyProfile(res.data.myProfile);
+           setLoading(false);//loading
         } 
         else if (res.data.status === 404)
         {
@@ -53,6 +56,15 @@ useEffect(() => {
         }
     });
 }, [props.match.params.id]);
+
+
+const [loading, setLoading] = useState(true);//loading
+if (loading)//Loading 3 
+{//npm install --save react-spinners
+    return <div className='loading_clipLoader'>
+        <ClipLoader  color={'36D7B7'} loading={loading} size={100} />
+    </div>
+}
 
 
   var profile_pic = '';
@@ -64,6 +76,7 @@ useEffect(() => {
       <img class="profile-user" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
   }
 
+
   var profile_intro = '';
   if (myProfile.status) {
     profile_intro =
@@ -73,6 +86,7 @@ useEffect(() => {
           <span>Intro</span>
           <div className="lb-action">
             <BioEditModal 
+            /*
             id={myProfile.id} 
             status={myProfile.status} 
             status_id={myProfile.status_id}
@@ -80,7 +94,9 @@ useEffect(() => {
             batch={myProfile.batch}
             bio={myProfile.bio}
             user_id={myProfile.user_id}
-            profile_image={myProfile.profile_image} />
+            profile_image={myProfile.profile_image}
+            */
+           {...myProfile} />
           </div>
         </div>
 
@@ -99,6 +115,7 @@ useEffect(() => {
       </div>
   }
 
+
   return (
     <>
       <main className='Profile'>
@@ -108,7 +125,7 @@ useEffect(() => {
             <img src={brand} alt="Banner image" />
 
             <div className="user">
-              {profile_pic}
+              {profile_pic }   
 
               <div className="user-name">
                 {user.name}
@@ -125,16 +142,9 @@ useEffect(() => {
 
               {/**Intro */}
               {profile_intro}
-
             </div>
-            <div className="td" id="m-col">
-              <div id="loading"><i className="material-icons">autorenew</i></div>
-            </div>
-
           </div>
         </div>
-
-
       </main>
     </>
   )

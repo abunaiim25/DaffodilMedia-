@@ -32,27 +32,11 @@ const BioEditModal = (props) => {
     //************************************************************* */
     document.title = "Profile - DIU";
     const history = useHistory();
+ 
+    const [errorlist, setError] = useState([]);
+    const [profileInput, setProfile] = useState(props);
+    const [picture, setPicture] = useState(props);
 
-    /*
-    const [id, setId] = useState(props.id);
-    const [status, setStatus] = useState(props.status);
-    const [status_id, setStatus_id] = useState(props.status_id);
-    const [department, setDepartment] = useState(props.department);
-    const [batch, setBatch] = useState(props.batch);
-    const [bio, setBio] = useState(props.bio);
-    const [image, setImage] = useState('');
-*/
-    
-
-    const [picture, setPicture] = useState([]);
-    const [profileInput, setProfile] = useState({
-        status: '',
-        status_id: '',
-        user_id: '',
-        department: '',
-        batch: '',
-        bio: '',
-    });
     //===========Input Fielde============
     const handleInput = (e) => {
         e.persist();
@@ -64,7 +48,7 @@ const BioEditModal = (props) => {
 
 
     //==========Form Submit==========
-    const submit_profile_update = (e) => {
+    const submit_profile_update = async  (e) => {
         e.preventDefault();
 
         
@@ -72,33 +56,37 @@ const BioEditModal = (props) => {
         //img
         formData.append('profile_image', picture.profile_image);
         //text
-        formData.append('user_id', profileInput.user_id);
+        formData.append('user_id', props.user_id);
         formData.append('status', profileInput.status);
         formData.append('status_id', profileInput.status_id);
         formData.append('department', profileInput.department);
         formData.append('batch', profileInput.batch);
         formData.append('bio', profileInput.bio);
+        console.log(formData)
 
         //post
-        //const profile_id = profileInput.user_id;
-        //const profile_id = props.match.params.id;
         const profile_id = props.id;
-        axios.post(`/api/profile-update/${profile_id}`, formData).then(res => {
+        try {
+        await axios.post(`/api/profile-update/${profile_id}`, formData).then(res => {
             //axios.post(`/api/profile-update`, formData).then(res => {
             if (res.data.status === 200) {
                 swal("Success", res.data.message, "success");
-                history.push('/');
+                setError([]);
+                history.path="/profile/:id";
             }
             else if (res.data.status === 422) {
-                swal("Oops!", res.data.errors, "error");
+                setError(res.data.errors);
             }
         });
+    } catch (e) {
+        alert(e)
+      }
     }
 
     var profile_pic = '';
     if (props.profile_image) {
         profile_pic =
-            <img className="profile-pic" src={`${PUBLIC_URL}/${props.profile_image}`}/>
+            <img className="profile-pic" src={`${PUBLIC_URL}/${picture.profile_image}`}/>
     } else {
         profile_pic =
             <img className="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
@@ -115,7 +103,8 @@ const BioEditModal = (props) => {
             <h4>Personal Information</h4>
             <button type='submit' className="btn btn-primary">Save</button>
         </div>
-
+        
+        <div className="row">
         <div className="profile_upload">
             <div className="small-12 medium-2 large-2 columns">
                 <div className="circle">
@@ -127,37 +116,38 @@ const BioEditModal = (props) => {
                 </div>
             </div>
         </div>
+        </div>
 
         <div>
-            <div className="horizontal_center">
-                
-                <select name='status' defaultValue={props.status} className='post_input' onChange={handleInput}>
-                    <option>Choose your status</option>
-                    <option>Student</option>
-                    <option>Faculty</option>
-                    <option>Offical Member</option>
-                    <option>Genaral Person</option>
+            <div className="horizontal_center row">
+                <select name='status' defaultValue={profileInput.status} className='post_input' onChange={handleInput}>
+                <option value="Student">Student</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Offical Member">Offical Member</option>
+                <option value="Genaral Person">Genaral Person</option>
                 </select>
+                <small className='text-danger px-4'>{errorlist.status}</small>
             </div>
 
-            <div className="horizontal_center">
-                <input type="hidden" name="user_id" defaultValue={props.user_id} className='post_input' placeholder='user id' onChange={handleInput} />
+
+            <div className="horizontal_center row">
+                <input type="text" name="status_id" value={profileInput.status_id} className='post_input' placeholder='Student Id / Employee Id' onChange={handleInput} />
+                <small className='text-danger px-4'>{errorlist.status_id}</small>
             </div>
 
-            <div className="horizontal_center">
-                <input type="text" name="status_id" defaultValue={props.status_id} className='post_input' placeholder='Student Id / Employee Id' onChange={handleInput} />
+            <div className="horizontal_center row">
+                <input type="text" defaultValue={profileInput.department} name='department' className='post_input' placeholder='Department' onChange={handleInput} />
+                <small className='text-danger px-4'>{errorlist.department}</small>
             </div>
 
-            <div className="horizontal_center">
-                <input type="text" defaultValue={props.department} name='department' className='post_input' placeholder='Department' onChange={handleInput} />
+            <div className="horizontal_center row">
+                <input type="text" defaultValue={profileInput.batch} name='batch' className='post_input' placeholder='Batch (only for student)' onChange={handleInput} />
+                <small className='text-danger px-4'>{errorlist.batch}</small>
             </div>
 
-            <div className="horizontal_center">
-                <input type="text" defaultValue={props.batch} name='batch' className='post_input' placeholder='Batch (only for student)' onChange={handleInput} />
-            </div>
-
-            <div className="horizontal_center">
-                <textarea className='post_textarea' name="bio" placeholder='Write something about yourself...' rows="3" onChange={handleInput}>{props.bio}</textarea>
+            <div className="horizontal_center row">
+                <textarea value={profileInput.bio} className='post_textarea' name="bio" placeholder='Write something about yourself...' rows="3" onChange={handleInput}></textarea>
+                <small className='text-danger px-4'>{errorlist.bio}</small>
             </div>
         </div>
          </form>

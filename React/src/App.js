@@ -8,6 +8,8 @@ import Page404 from './components/errors/Page404';
 import FrontendPublicRoute from './routes_items/FrontendPublicRoute';
 import AdminPrivateRoute from './routes_items/AdminPrivateRoute';
 import ResetPassword from './components/frontend/Auth/ResetPassword';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 

@@ -34,10 +34,12 @@ class ProfileController extends Controller
     {
         //validation
         $validator = Validator::make($request->all(), [
-            'status' => 'max:191',
-            'status_id' => 'max:191',
-            'department' => 'max:191',
-            'batch' => 'max:191',
+            'status' => 'required|max:191',
+            'status_id' => 'required|max:191',
+            'department' => 'required|max:191',
+            'batch' => 'required|max:191',
+            'bio' => 'required|max:500',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         //post fail or post Database
@@ -70,16 +72,18 @@ class ProfileController extends Controller
                 'message' => 'Profile Updated Successfully'
             ]);
         }
-    }
+    }         
     
     public function profile_update(Request $request, $profile_id)
     {
         //validation
         $validator = Validator::make($request->all(), [
-            'status' => 'max:191',
-            'status_id' => 'max:191',
-            'department' => 'max:191',
-            'batch' => 'max:191',
+            'status' => 'required|max:191',
+            'status_id' => 'required|max:191',
+            'department' => 'required|max:191',
+            'batch' => 'required|max:191',
+            'bio' => 'required|max:500',
+            'profile_image' => '|image|mimes:jpeg,png,jpg',
         ]);
 
         //post fail or post Database

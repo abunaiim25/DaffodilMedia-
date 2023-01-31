@@ -62,7 +62,6 @@ relative, absolute=> absolute kaj kora relative ar modda thaka, jokhon akta div 
     margin-top: -10px;
     font-family: 'Poppins', sans-serif;
     color: var(--color-dark);
-    background: var(--color-light);
     overflow-x: hidden;
     overflow-y: hidden;
 }

@@ -32,6 +32,7 @@ const BioAddModal = () => {
     document.title = "Profile - DIU";
     const history = useHistory();
 
+    const [errorlist, setError] = useState([]);
     const [picture, setPicture] = useState([]);
     const [profileInput, setProfile] = useState({
         status: '',
@@ -78,10 +79,12 @@ const BioAddModal = () => {
         //post
         axios.post(`/api/profile-store`, formData).then(res => {
             if (res.data.status === 200) {
+                setError([]);
+                history.path="/profile/:id";
                 swal("Success", res.data.message, "success");
             }
             else if (res.data.status === 422) {
-                swal("Oops!", res.data.errors, "error");
+                setError(res.data.errors);
             }
         });
     }
@@ -89,7 +92,7 @@ const BioAddModal = () => {
     var profile_pic = '';
     if (profileInput.profile_image) {
         profile_pic =
-            <img className="profile-pic" src={`${PUBLIC_URL}/${profileInput.profile_image}`} />
+            <img className="profile-pic" src={`${PUBLIC_URL}/${picture.profile_image}`} />
     } else {
         profile_pic =
             <img className="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" />
@@ -114,7 +117,8 @@ const BioAddModal = () => {
                                         <button type='submit' className="btn btn-primary">Save</button>
                                     </div>
 
-                                    <div className="profile_upload">
+                                  <div className="row mb-3">
+                                  <div className="profile_upload ">
                                         <div className="small-12 medium-2 large-2 columns">
                                             <div className="circle">
                                                 {profile_pic}
@@ -123,34 +127,43 @@ const BioAddModal = () => {
                                                 <i className="fa fa-camera upload-button"></i>
                                                 <input className="file-upload" name='profile_image' onChange={handleImage} type="file" accept="image/*" />
                                             </div>
+                                            
                                         </div>
                                     </div>
+                                  <small className='text-danger px-4'>{errorlist.profile_image}</small>
+                                  </div>
+                                   
 
                                     <div>
-                                        <div className="horizontal_center">
+                                        <div className="horizontal_center row" >
                                             <select name='status' className='post_input' onChange={handleInput}>
-                                                <option>Choose your status</option>
-                                                <option>Student</option>
-                                                <option>Faculty</option>
-                                                <option>Offical Member</option>
-                                                <option>Genaral Person</option>
+                                                <option selected>Choose your status</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Faculty">Faculty</option>
+                                                <option value="Offical Member">Offical Member</option>
+                                                <option value="Genaral Person">Genaral Person</option>
                                             </select>
+                                            <small className='text-danger px-4'>{errorlist.status}</small>
                                         </div>
 
-                                        <div className="horizontal_center">
-                                            <input type="text" name="status_id"  className='post_input' placeholder='Student Id / Employee Id' onChange={handleInput} />
+                                       <div className="horizontal_center row">
+                                            <input type="text" name="status_id"  className='post_input' placeholder='Student Id / Employee Id' onChange={handleInput}/>
+                                            <small className='text-danger px-4'>{errorlist.status_id}</small>
                                         </div>
 
-                                        <div className="horizontal_center">
+                                        <div className="horizontal_center row">
                                             <input type="text"  name='department' className='post_input' placeholder='Department' onChange={handleInput} />
+                                            <small className='text-danger px-4'>{errorlist.department}</small>
                                         </div>
 
-                                        <div className="horizontal_center">
+                                        <div className="horizontal_center  row">
                                             <input type="text" name='batch' className='post_input' placeholder='Batch (only for student)' onChange={handleInput} />
+                                            <small className='text-danger px-4'>{errorlist.batch}</small>
                                         </div>
 
-                                        <div className="horizontal_center">
-                                            <textarea  className='post_textarea' name="bio" placeholder='Write something about yourself...' rows="3" onChange={handleInput}></textarea>
+                                        <div className="horizontal_center row">
+                                            <textarea  className='post_textarea' name="bio" placeholder='Write something about yourself...' rows="3" onChange={handleInput} ></textarea>
+                                            <small className='text-danger px-4'>{errorlist.bio}</small>
                                         </div>
                                     </div>
                                 </form>
