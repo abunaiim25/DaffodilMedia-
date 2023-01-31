@@ -5,11 +5,12 @@ import profile3 from '../assets/images/profile-3.jpg'
 import profile4 from '../assets/images/profile-4.jpg'
 import profile5 from '../assets/images/profile-5.jpg'
 import profile6 from '../assets/images/profile-6.jpg'
+import n4 from '../assets/images/n4.jpeg'
 import feed from '../assets/images/feed-1.jpg'
 import feed2 from '../assets/images/feed-2.jpg'
 import feed3 from '../assets/images/feed-3.jpg'
 import jQuery from 'jquery';
-import VideoPlayer from 'react-video-js-player';//video
+//import VideoPlayer from 'react-video-js-player';//video
 import videoFeed from '../assets/video/test.mp4'
 
 
@@ -122,7 +123,7 @@ const Feeds = () => {
           </div>
 
           <div className="photo">
-            <img src={feed2} alt="" />
+            <img src={n4} alt="" />
           </div>
 
           <div className="action-button">
@@ -188,8 +189,8 @@ const Feeds = () => {
                         </div>
                       </div>
                     </div>
-                    <div class="progress_full">
-                      <div class="progress" style={{ width: "25%" }}><p>25%</p></div>
+                    <div className="progress_full">
+                      <div className="progress" style={{ width: "25%" }}><p>25%</p></div>
                     </div>
                   </label>
 
@@ -202,8 +203,8 @@ const Feeds = () => {
                         </div>
                       </div>
                     </div>
-                    <div class="">
-                      <div class="progress" style={{ width: "100%" }}><p>100%</p></div>
+                    <div className="">
+                      <div className="progress" style={{ width: "100%" }}><p>100%</p></div>
                     </div>
                   </label>
 
@@ -216,8 +217,8 @@ const Feeds = () => {
                         </div>
                       </div>
                     </div>
-                    <div class="">
-                      <div class="progress" style={{ width: "10%" }}><p>0%</p></div>
+                    <div className="">
+                      <div className="progress" style={{ width: "10%" }}><p>0%</p></div>
                     </div>
                   </label>
 
@@ -382,8 +383,8 @@ const Feeds = () => {
                         </div>
                       </div>
                     </div>
-                    <div class="">
-                      <div class="progress" style={{ width: "20%" }}><p>20%</p></div>
+                    <div className="">
+                      <div className="progress" style={{ width: "20%" }}><p>20%</p></div>
                     </div>
                   </label>
 

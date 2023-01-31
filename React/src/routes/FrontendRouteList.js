@@ -13,7 +13,7 @@ const FrontendRouteList =
 [
     // Pages
     { path:'/', exact:true, name:'Home' , component:Home },
-    { path:'/profile/:name_slug', exact:true, name:'Profile' , component:Profile },
+    { path:'/profile/:id', exact:true, name:'Profile' , component:Profile },
     { path:'/create-post', exact:true, name:'CreatePostModal' , component:CreatePostModal },
    
 ];

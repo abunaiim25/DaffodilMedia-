@@ -125,7 +125,7 @@ const Sidebar = () => {
     useEffect(() => {
         axios.get('/api/me')
             .then(response => {
-                console.log(response.data.name);
+                //console.log(response.data.name);
                 setUser(response.data);
             });
     }, []);
@@ -163,7 +163,7 @@ const Sidebar = () => {
                         <h3>Home</h3>
                     </Link>
                    
-                    <Link to={`/profile/${user.name}`} className="menu-item">
+                    <Link to={`/profile/${user.id}`} className="menu-item">
                         <span><i className="uil uil-user"></i></span>
                         <h3>Profile</h3>
                     </Link>

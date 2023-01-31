@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum', 'isApiAdmin'])->group(function() {
 //=======================Profile==============================
 //Route::put('profile-store/{id}', [ProfileController::class, 'profile_store']);
 Route::post('profile-store', [ProfileController::class, 'profile_store']);
-Route::get('my_profile_view', [ProfileController::class, 'my_profile_view']);
+Route::get('my_profile_view/{id}', [ProfileController::class, 'my_profile_view']);
 Route::post('profile-update/{profile_id}', [ProfileController::class, 'profile_update']);
 
 

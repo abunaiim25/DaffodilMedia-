@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { PUBLIC_URL } from '../../../PUBLIC_URL';
 import BioAddModal from './BioAddModal';
+import swal from 'sweetalert';
 
 const Profile = (props) => {
 
@@ -33,24 +34,29 @@ const Profile = (props) => {
   useEffect(() => {
     axios.get('/api/me')
       .then(response => {
-        //console.log(response.data.name);
         setUser(response.data);
       });
   }, []);
 
-  //========my_profile_view==========
-  const [myProfile, setMyProfile] = useState([]);
-  useEffect(() => {
-    axios.get(`/api/my_profile_view`).then(res => {
-      if (res.data.status === 200) {
-        setMyProfile(res.data.myProfile)
-      }
+
+const [myProfile, setMyProfile] = useState([]);
+const id = props.match.params.id;
+useEffect(() => {
+    axios.get(`/api/my_profile_view/${id}`).then(res => {
+        if (res.data.status === 200) {
+          setMyProfile(res.data.myProfile);
+        } 
+        else if (res.data.status === 404)
+        {
+          swal("Error", res.data.message, "error");
+          console.log(res.data.message)
+        }
     });
-  }, []);
+}, [props.match.params.id]);
 
 
   var profile_pic = '';
-  if (myProfile) {
+  if (myProfile.profile_image) {
     profile_pic =
       <img class="profile-user" src={`${PUBLIC_URL}/${myProfile.profile_image}`} />
   } else {
@@ -59,23 +65,31 @@ const Profile = (props) => {
   }
 
   var profile_intro = '';
-  if (myProfile) {
+  if (myProfile.status) {
     profile_intro =
       <div className="l-cnt">
         <div className="cnt-label">
           <i className="l-i" id="l-i-i"></i>
           <span>Intro</span>
           <div className="lb-action">
-
-            <BioEditModal />
-
+            <BioEditModal 
+            id={myProfile.id} 
+            status={myProfile.status} 
+            status_id={myProfile.status_id}
+            department={myProfile.department}
+            batch={myProfile.batch}
+            bio={myProfile.bio}
+            user_id={myProfile.user_id}
+            profile_image={myProfile.profile_image} />
           </div>
         </div>
+
         <div id="i-box">
-          <div id="intro-line">Front-end Engineer</div>
-          <div id="u-occ">I love making applications with Angular.</div>
-          <div id="u-loc"><i class="fa-solid fa-house-user"></i>
-            <a href="#">Bengaluru</a>, <a href="#">India</a></div>
+          <div id="u-loc"><i className="fa-solid fa-house-user p-2"></i>Status: {myProfile.status}</div>
+          <div id="u-loc"><i className="fa-solid fa-house-user  p-2"></i>ID: {myProfile.status_id}</div>
+          <div id="u-loc"><i className="fa-solid fa-house-user  p-2"></i>Department: {myProfile.department}</div>
+          <div id="u-loc"><i className="fa-solid fa-house-user  p-2"></i>Batch: {myProfile.batch}</div>
+          <div id="u-loc"><i className="fa-solid fa-house-user  p-2"></i>Bio: {myProfile.bio}</div>
         </div>
       </div>
   } else {
@@ -108,7 +122,6 @@ const Profile = (props) => {
         <div id="main-content">
           <div className="tb">
             <div className="td" id="l-col">
-
 
               {/**Intro */}
               {profile_intro}

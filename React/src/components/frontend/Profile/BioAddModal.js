@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router-dom';
 import { PUBLIC_URL } from '../../../PUBLIC_URL';
 
-const BioAddModal = (props) => {
+const BioAddModal = () => {
 
     /*********************Profile Image Jquery******************** */
     $(document).ready(function () {
@@ -59,14 +59,6 @@ const BioAddModal = (props) => {
     }, []);
 
 
-    //========my_profile_view==========
-    useEffect(() => {
-        axios.get(`/api/my_profile_view`).then(res => {
-            if (res.data.status === 200) {
-                setProfile(res.data.myProfile)
-            }
-        });
-    }, []);
 
     //==========Form Submit==========
     const submit_profile = (e) => {
@@ -95,7 +87,7 @@ const BioAddModal = (props) => {
     }
 
     var profile_pic = '';
-    if (profileInput) {
+    if (profileInput.profile_image) {
         profile_pic =
             <img className="profile-pic" src={`${PUBLIC_URL}/${profileInput.profile_image}`} />
     } else {

@@ -183,8 +183,8 @@ relative, absolute=> absolute kaj kora relative ar modda thaka, jokhon akta div 
 .socialMedia main .container {
     display: grid;
     /* grid-template-columns: 5rem auto 30vw;*/
-    grid-template-columns: 19vw auto 19vw;
-    column-gap: 2rem;
+    grid-template-columns: 20% 50% 30%;
+    column-gap: 5rem;
     position: relative;
 }
 

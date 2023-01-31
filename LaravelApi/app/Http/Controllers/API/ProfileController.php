@@ -12,14 +12,22 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    public function my_profile_view()
+    public function my_profile_view($id)
     {
-        $id = auth('sanctum')->user()->id;
+        //$id = auth('sanctum')->user()->id;
         $myProfile = Profile::where('user_id', $id)->first();
-        return response()->json([
-            'status' => 200,
-            'myProfile' => $myProfile,
-        ]);
+        if($myProfile){
+            return response()->json([
+                'status' => 200,
+                'myProfile' => $myProfile,
+            ]);
+        }else{
+            return response()->json([
+                'status' => 404,
+                'myProfile' => "No Profile Found",
+            ]);
+        }
+       
     }
     //=================Store on DB========================
     public function profile_store(Request $request)
